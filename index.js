@@ -1,8 +1,16 @@
-console.log("hello")
+const express = require("express")
+const sessionControler = require("./controller/session-controller")
 
-const Calculator = require("./Calculator")
+const app = express()
 
-Calculator.Addition(25,35)
-Calculator.Subtraction(75,7)
-Calculator.Multiplication(12,15)
-Calculator.Division(250,5)
+app.get("/",function(req,res){
+    res.write("welcome...")
+    res.end()
+})
+
+app.get("/login",sessionControler.login)
+app.get("/signup",sessionControler.signup)
+
+app.listen(3000,function(){
+    console.log("server started on 3000")
+})
