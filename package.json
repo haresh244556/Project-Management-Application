@@ -1,11 +1,24 @@
 {
   "name": "project-management-application",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Haresh Thakor",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2",
+    "node-modules": "^1.0.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haresh244556/Project-Management-Application.git"
+  },
+  "bugs": {
+    "url": "https://github.com/haresh244556/Project-Management-Application/issues"
+  },
+  "homepage": "https://github.com/haresh244556/Project-Management-Application#readme",
+  "description": ""
 }
