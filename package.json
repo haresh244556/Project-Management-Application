@@ -8,10 +8,10 @@
   "author": "Haresh Thakor",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.2",
-    "node-modules": "^1.0.1"
+    "express": "^4.17.3",
+    "mongoose": "^6.2.1",
+    "node-modules": "^0.0.1"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/haresh244556/Project-Management-Application.git"
