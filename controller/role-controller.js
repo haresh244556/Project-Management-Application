@@ -35,10 +35,10 @@ module.exports.getAllRoles = function(req,res){
 
 //sdfdsfdsfds
 module.exports.deleteRole = function(req,res){
-    let RoleId = req.params.roleId
+    let roleId = req.params.roleId
 
     //delete from role where roleId = 1
-    RoleModel.deleteOne({"_id":roleId},function(err,data){
+    RoleModel.deleteOne({_id:roleId},function(err,data){
         if(err){
             res.json({msg:"something went wrong!!!",status:-1,data:err})
         }else{
@@ -46,6 +46,7 @@ module.exports.deleteRole = function(req,res){
         }
     })
 }
+
 //roleName
 
 module.exports.updateRole = function(req,res){
