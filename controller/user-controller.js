@@ -1,4 +1,4 @@
-const Usermodel = require("../model/user-model")
+const UserModel = require("../model/user-model")
 
 //add [post]
 module.exports.addUser = function(req,res){
@@ -7,7 +7,7 @@ module.exports.addUser = function(req,res){
     let password = req.body.password
     let role = req.body.role
 
-    let user = new Usermodel({
+    let user = new UserModel({
         firstName:firstName,
         email:email,
         password:password,
@@ -27,7 +27,8 @@ module.exports.addUser = function(req,res){
 //list
 
 module.exports.getAllUsers = function(req,res){
-    Usermodel.find().populate("role").exec(function(err,data){
+
+    UserModel.find().populate("role").exec(function(err,data){
         if(err){
             res.json({msg:"SMW",data:err,status:-1}) //-1 [303 404 500]
         }else{
@@ -41,7 +42,7 @@ module.exports.deleteUser = function(req,res){
     //params userid
     let userId = req.params.userId //postman-> userId
 
-    Usermodel.deleteOne({_id:userId},function(err,data){
+    UserModel.deleteOne({_id:userId},function(err,data){
         if(err){
             res.json({msg:"SMW",data:err,status:-1}) //-1 [303 404 500]
         }else{
@@ -51,3 +52,17 @@ module.exports.deleteUser = function(req,res){
 }
 
 //update
+module.exports.updateUser = function(req,res){
+
+    //update User set firstName = admin where UserId = 12121
+    let userId = req.body.userId
+    let firstName = req.body.firstName
+    
+    UserModel.updateOne({_id:userId},{firstName:firstName},function(err,data){
+        if(err){
+            res.json({msg:"Something went wrong!!!",status:-1,data:err})
+        }else{
+            res.json({msg:"updated...",status:200,data:data})
+        }
+    })
+}

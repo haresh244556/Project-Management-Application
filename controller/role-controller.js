@@ -33,7 +33,7 @@ module.exports.getAllRoles = function(req,res){
     })
 }
 
-//sdfdsfdsfds
+//delete
 module.exports.deleteRole = function(req,res){
     let roleId = req.params.roleId
 
