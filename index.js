@@ -7,6 +7,8 @@ const roleController = require("./controller/role-controller")
 const userController = require("./controller/user-controller")
 const projectController = require("./controller/project-controller")
 const project_teamController = require("./controller/project_team-controller")
+const statusController = require("./controller/status-controller")
+
 
 const app = express()
 //middle ware
@@ -60,6 +62,12 @@ app.post("/project_teams",project_teamController.addProject_team)
 app.get("/project_teams",project_teamController.getAllProject_teams)
 app.delete("/project_teams/:project_teamId",project_teamController.deleteProject_team)
 app.put("/project_teams",project_teamController.updateProject_team)
+
+//status
+app.post("/status",statusController.addStatus)
+app.get("/status",statusController.getAllStatus)
+app.delete("/status/:statusId",statusController.deleteStatus)
+app.put("/status",statusController.updateStatus)
 
 //server
 
