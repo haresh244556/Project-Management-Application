@@ -1,3 +1,4 @@
+const bcrypt = require("bcrypt")
 const UserModel = require("../model/user-model")
 
 //add [post]
@@ -5,12 +6,13 @@ module.exports.addUser = function(req,res){
     let firstName = req.body.firstName
     let email = req.body.email
     let password = req.body.password
+    let encPassword = bcrypt.hashSync(password,10)
     let role = req.body.role
 
     let user = new UserModel({
         firstName:firstName,
         email:email,
-        password:password,
+        password:encPassword,
         role:role
     })
 
@@ -57,12 +59,37 @@ module.exports.updateUser = function(req,res){
     //update User set firstName = admin where UserId = 12121
     let userId = req.body.userId
     let firstName = req.body.firstName
+    let email = req.body.email
+    let password = req.body.password
     
-    UserModel.updateOne({_id:userId},{firstName:firstName},function(err,data){
-        if(err){
-            res.json({msg:"Something went wrong!!!",status:-1,data:err})
+    UserModel.updateOne({_id:userId},{firstName:firstName,email:email,password:password},function(err, data) {
+            if (err) {
+                res.json({ msg: "Something went wrong!!!", status: -1, data: err })
+            } else {
+                res.json({ msg: "updated...", status: 200, data: data })
+            }
+        })
+}
+
+//login
+module.exports.login = function(req,res){
+    let param_email = req.body.email
+    let param_password = req.body.password
+
+    let isCorrect = false;
+
+    UserModel.findOne({email:param_email},function(err,data){
+        if(data){
+            let ans = bcrypt.compareSync(param_password,data.password)
+            if(ans == true){
+                isCorrect = true
+            }
+        }
+
+        if(isCorrect == false){
+            res.json({msg:"Invalid Credentials...",data:req.body,status:-1})
         }else{
-            res.json({msg:"updated...",status:200,data:data})
+            res.json({msg:"Login...",data:data,status:200})
         }
     })
 }
