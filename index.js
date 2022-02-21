@@ -5,7 +5,8 @@ const mongoose = require("mongoose")
 const sessionController = require("./controller/session-controller")
 const roleController = require("./controller/role-controller")
 const userController = require("./controller/user-controller")
-
+const projectController = require("./controller/project-controller")
+const project_teamController = require("./controller/project_team-controller")
 
 const app = express()
 //middle ware
@@ -48,6 +49,17 @@ app.delete("/users/:userId",userController.deleteUser)
 app.put("/users",userController.updateUser)
 app.post("/login",userController.login)
 
+//project
+app.post("/projects",projectController.addProject)
+app.get("/projects",projectController.getAllProjects)
+app.delete("/projects/:projectId",projectController.deleteProject)
+app.put("/projects",projectController.updateProject)
+
+//project_team
+app.post("/project_teams",project_teamController.addProject_team)
+app.get("/project_teams",project_teamController.getAllProject_teams)
+app.delete("/project_teams/:project_teamId",project_teamController.deleteProject_team)
+app.put("/project_teams",project_teamController.updateProject_team)
 
 //server
 
