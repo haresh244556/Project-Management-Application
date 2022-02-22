@@ -9,6 +9,9 @@ const projectController = require("./controller/project-controller")
 const project_teamController = require("./controller/project_team-controller")
 const statusController = require("./controller/status-controller")
 const project_moduleController = require("./controller/project_module-controller")
+const taskController = require("./controller/task-controller")
+const user_taskController = require("./controller/user_task-controller")
+
 
 const app = express()
 //middle ware
@@ -74,6 +77,18 @@ app.post("/project_modules",project_moduleController.addProject_module)
 app.get("/project_modules",project_moduleController.getAllProject_modules)
 app.delete("/project_modules/:project_moduleId",project_moduleController.deleteProject_module)
 app.put("/project_modules",project_moduleController.updateProject_module)
+
+//tasks
+app.post("/tasks",taskController.addTask)
+app.get("/tasks",taskController.getAllTasks)
+app.delete("/tasks/:taskId",taskController.deleteTask)
+app.put("/tasks",taskController.updateTask)
+
+//user_task
+app.post("/user_tasks",user_taskController.addUser_task)
+app.get("/user_tasks",user_taskController.getAllUser_tasks)
+app.delete("/user_tasks/:user_taskId",user_taskController.deleteUser_task)
+app.put("/user_tasks",user_taskController.updateUser_task)
 
 //server
 
