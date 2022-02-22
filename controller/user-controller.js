@@ -18,7 +18,7 @@ module.exports.addUser = function(req,res){
 
     user.save(function(err,data){
         if(err){
-            res.json({msg:"SMW",data:err,status:-1}) //-1
+            res.json({msg:"Something went wrong!!!",data:err,status:-1}) //-1
         }else{
             res.json({msg:"signup done",data:data,status:200})//http status code
         }
@@ -32,9 +32,9 @@ module.exports.getAllUsers = function(req,res){
 
     UserModel.find().populate("role").exec(function(err,data){
         if(err){
-            res.json({msg:"SMW",data:err,status:-1}) //-1 [303 404 500]
+            res.json({msg:"Something went wrong!!!",data:err,status:-1}) //-1 [303 404 500]
         }else{
-            res.json({msg:"users ret...",data:data,status:200})//http status code
+            res.json({msg:"Users are...",data:data,status:200})//http status code
         }
     })
 }
@@ -46,9 +46,9 @@ module.exports.deleteUser = function(req,res){
 
     UserModel.deleteOne({_id:userId},function(err,data){
         if(err){
-            res.json({msg:"SMW",data:err,status:-1}) //-1 [303 404 500]
+            res.json({msg:"Something went wrong!!!",data:err,status:-1}) //-1 [303 404 500]
         }else{
-            res.json({msg:"users removed...",data:data,status:200})//http status code
+            res.json({msg:"User removed...",data:data,status:200})//http status code
         }
     })
 }
@@ -57,16 +57,16 @@ module.exports.deleteUser = function(req,res){
 module.exports.updateUser = function(req,res){
 
     //update User set firstName = admin where UserId = 12121
-    let userId = req.body.userId
-    let firstName = req.body.firstName
-    let email = req.body.email
-    let password = req.body.password
+    let paramuserId = req.body.userId
+    let paramfirstName = req.body.firstName
+    let paramemail = req.body.email
+    let parampassword = req.body.password
     
-    UserModel.updateOne({_id:userId},{firstName:firstName,email:email,password:password},function(err, data) {
+    UserModel.updateOne({_id:paramuserId},{firstName:paramfirstName,email:paramemail,password:parampassword},function(err, data) {
             if (err) {
                 res.json({ msg: "Something went wrong!!!", status: -1, data: err })
             } else {
-                res.json({ msg: "updated...", status: 200, data: data })
+                res.json({ msg: "User updated...", status: 200, data: data })
             }
         })
 }

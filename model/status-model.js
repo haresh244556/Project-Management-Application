@@ -2,11 +2,12 @@ const mongoose = require("mongoose")
 
 //schema
 let StatusSchema = new mongoose.Schema({
-    StatusName:{
+    statusName:{
         type:String
+        
     }
 })
 
 //model
-let StatusModel = mongoose.model("status",StatusSchema) //roles
+let StatusModel = mongoose.model("status",StatusSchema) //status
 module.exports = StatusModel

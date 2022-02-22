@@ -2,31 +2,29 @@ const StatusModel = require("../model/status-model")
 
 module.exports.addStatus = function(req,res){
     //db insert status
-    let StatusName = req.body.StatusName
+    let statusName = req.body.statusName
 
     let status = new StatusModel({
-        StatusName:StatusName
+        statusName:statusName
     })
 
     status.save(function(err,data){
         if(err){
-            res.json({msg:"SMW",status:-1,data:err})
+            res.json({msg:"Something went wrong!!!",status:-1,data:err})
         }else{
-            res.json({msg:"Status added",status:200,data:data})
+            res.json({msg:"Status added...",status:200,data:data})
         }
     })
 }
 
 module.exports.getAllStatus = function(req,res){
-    
-    //model
 
     //REST
-    StatusModel.find(function(err,roles){
+    StatusModel.find(function(err,status){
         if(err){
             res.json({msg:"Something went wrong!!!",status:-1,data:err})
         }else{
-            res.json({msg:"Today Status....",status:200,data:roles})
+            res.json({msg:" Status are....",status:200,data:status})
         }
     })
 }
@@ -50,10 +48,10 @@ module.exports.deleteStatus = function(req,res){
 module.exports.updateStatus = function(req,res){
 
     //update role set statusName = admin where statusId = 12121
-    let statusId = req.body.statusId
-    let StatusName = req.body.StatusName
+    let paramstatusId = req.body.statusId
+    let paramstatusName = req.body.statusName
     
-    StatusModel.updateOne({_id:statusId},{StatusName:StatusName},function(err,data){
+    StatusModel.updateOne({_id:paramstatusId},{statusName:paramstatusName},function(err,data){
         if(err){
             res.json({msg:"Something went wrong!!!",status:-1,data:err})
         }else{

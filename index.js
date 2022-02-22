@@ -8,7 +8,7 @@ const userController = require("./controller/user-controller")
 const projectController = require("./controller/project-controller")
 const project_teamController = require("./controller/project_team-controller")
 const statusController = require("./controller/status-controller")
-
+const project_moduleController = require("./controller/project_module-controller")
 
 const app = express()
 //middle ware
@@ -68,6 +68,12 @@ app.post("/status",statusController.addStatus)
 app.get("/status",statusController.getAllStatus)
 app.delete("/status/:statusId",statusController.deleteStatus)
 app.put("/status",statusController.updateStatus)
+
+//project_module
+app.post("/project_modules",project_moduleController.addProject_module)
+app.get("/project_modules",project_moduleController.getAllProject_modules)
+app.delete("/project_modules/:project_moduleId",project_moduleController.deleteProject_module)
+app.put("/project_modules",project_moduleController.updateProject_module)
 
 //server
 

@@ -12,5 +12,5 @@ const Project_teamSchema = new mongoose.Schema({
     }
 })
 
-const Project_teamModel = mongoose.model("project_team",Project_teamSchema)
+const Project_teamModel = mongoose.model("project_team",Project_teamSchema)//project_teams
 module.exports = Project_teamModel

@@ -2,20 +2,20 @@ const ProjectModel = require("../model/project-model")
 
 module.exports.addProject = function(req,res){
     //db insert project
-    let Title = req.body.Title
-    let Description = req.body.Description
-    let Technology = req.body.Technology
-    let EstimatedHours = req.body.EstimatedHours
-    let StartDate = req.body.StartDate
-    let CompletionDate = req.body.CompletionDate
+    let title = req.body.title
+    let description = req.body.description
+    let technology = req.body.technology
+    let estimatedHours = req.body.estimatedHours
+    let startDate = req.body.startDate
+    let completionDate = req.body.completionDate
 
     let project = new ProjectModel({
-        Title:Title,
-        Description:Description,
-        Technology:Technology,
-        EstimatedHours:EstimatedHours,
-        StartDate:StartDate,
-        CompletionDate:CompletionDate
+        title:title,
+        description:description,
+        technology:technology,
+        estimatedHours:estimatedHours,
+        startDate:startDate,
+        completionDate:completionDate
         
     })
 
@@ -23,7 +23,7 @@ module.exports.addProject = function(req,res){
         if(err){
             res.json({msg:"Something went wrong!!!",status:-1,data:err})
         }else{
-            res.json({msg:"project added",status:200,data:data})
+            res.json({msg:"project added...",status:200,data:data})
         }
     })
 }
@@ -32,11 +32,11 @@ module.exports.addProject = function(req,res){
 module.exports.getAllProjects = function(req,res){
     
     //REST
-    ProjectModel.find(function(err,projects){
+    ProjectModel.find(function(err,data){
         if(err){
             res.json({msg:"Something went wrong!!!",status:-1,data:err})
         }else{
-            res.json({msg:"projects....",status:200,data:projects})
+            res.json({msg:"Projects are....",status:200,data:data})
         }
     })
 }
@@ -50,7 +50,7 @@ module.exports.deleteProject = function(req,res){
         if(err){
             res.json({msg:"something went wrong!!!",status:-1,data:err})
         }else{
-            res.json({msg:"removed...",status:200,data:data})
+            res.json({msg:"Project removed...",status:200,data:data})
         }
     })
 }
@@ -60,24 +60,24 @@ module.exports.deleteProject = function(req,res){
 module.exports.updateProject = function(req,res){
 
     //update where Id = 12121
-    let projectId = req.body.projectId
-    let Title = req.body.Title
-    let Description = req.body.Description
-    let Technology = req.body.Technology
-    let EstimatedHours = req.body.EstimatedHours
-    let StartDate = req.body.StartDate
-    let CompletionDate = req.body.CompletionDate
+    let paramprojectId = req.body.projectId
+    let paramtitle = req.body.title
+    let paramdescription = req.body.description
+    let paramtechnology = req.body.technology
+    let paramestimatedHours = req.body.estimatedHours
+    let paramstartDate = req.body.startDate
+    let paramcompletionDate = req.body.completionDate
     
-    ProjectModel.updateOne({_id:projectId},{Title:Title,
-         Description:Description,
-        Technology:Technology,
-        EstimatedHours:EstimatedHours,
-        StartDate:StartDate,
-        CompletionDate:CompletionDate},function(err,data){
+    ProjectModel.updateOne({_id:paramprojectId},{title:paramtitle,
+        description:paramdescription,
+        technology:paramtechnology,
+        estimatedHours:paramestimatedHours,
+        startDate:paramstartDate,
+        completionDate:paramcompletionDate},function(err,data){
         if(err){
             res.json({msg:"Something went wrong!!!",status:-1,data:err})
         }else{
-            res.json({msg:"updated...",status:200,data:data})
+            res.json({msg:"Project updated...",status:200,data:data})
         }
     })
 }

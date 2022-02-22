@@ -1,4 +1,3 @@
-const { populate } = require("../model/project_team-model")
 const Project_teamModel = require("../model/project_team-model")
 
 module.exports.addProject_team = function(req,res){
@@ -15,7 +14,7 @@ module.exports.addProject_team = function(req,res){
         if(err){
             res.json({msg:"Something went wrong!!!",status:-1,data:err})
         }else{
-            res.json({msg:"project_team added",status:200,data:data})
+            res.json({msg:"Project_team added...",status:200,data:data})
         }
     })
 }
@@ -28,7 +27,7 @@ module.exports.getAllProject_teams = function(req,res){
         if(err){
             res.json({msg:"Something went wrong!!!",status:-1,data:err})
         }else{
-            res.json({msg:"project_teams...",status:200,data:data})
+            res.json({msg:"Project_teams are...",status:200,data:data})
         }
     })
 }
@@ -52,11 +51,11 @@ module.exports.deleteProject_team = function(req,res){
 module.exports.updateProject_team = function(req,res){
 
     //update where Id = 12121
-    let project_teamId = req.body.project_teamId
-    let project = req.body.project
-    let user = req.body.user
+    let paramproject_teamId = req.body.project_teamId
+    let paramproject = req.body.project
+    let paramuser = req.body.user
     
-    Project_teamModel.updateOne({_id:project_teamId},{project:project,user:user},function(err,data){
+    Project_teamModel.updateOne({_id:paramproject_teamId},{project:paramproject,user:paramuser},function(err,data){
         if(err){
             res.json({msg:"Something went wrong!!!",status:-1,data:err})
         }else{

@@ -12,9 +12,9 @@ module.exports.addRole = function(req,res){
         if(err){
             console.log(err);
             //sendMailToDev(err);
-            res.json({msg:"SMW",status:-1,data:req.body})
+            res.json({msg:"Something went wrong!!!",status:-1,data:req.body})
         }else{
-            res.json({msg:"role added",status:200,data:success})
+            res.json({msg:"Role added....",status:200,data:success})
         }
     })
 }
@@ -28,7 +28,7 @@ module.exports.getAllRoles = function(req,res){
         if(err){
             res.json({msg:"Something went wrong!!!",status:-1,data:err})
         }else{
-            res.json({msg:"roles....",status:200,data:roles})
+            res.json({msg:"Roles are....",status:200,data:roles})
         }
     })
 }
@@ -42,7 +42,7 @@ module.exports.deleteRole = function(req,res){
         if(err){
             res.json({msg:"something went wrong!!!",status:-1,data:err})
         }else{
-            res.json({msg:"removed...",status:200,data:data})
+            res.json({msg:"Role removed...",status:200,data:data})
         }
     })
 }
@@ -59,7 +59,7 @@ module.exports.updateRole = function(req,res){
         if(err){
             res.json({msg:"Something went wrong!!!",status:-1,data:err})
         }else{
-            res.json({msg:"updated...",status:200,data:data})
+            res.json({msg:"Role updated...",status:200,data:data})
         }
     })
 }
