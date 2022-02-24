@@ -5,12 +5,19 @@
 </head>
 
 <body>
-    <form action="saveuser" method="post">
-         FirstName: <input type="text" name="fisrtName"/><br><br>
-         Email: <input type="text" name="email"/><br><br>
-         Password: <input type="password" name="password"/><br><br>
+    <div>
+        <form action="saveuser" method="post">
+            <label for="uname">UserName:</label> 
+            <input type="text" name="uname" placeholder="Enter UserName"><br><br>
+            <label for="email">Email:</label>
+            <input type="email" name="email"placeholder="Enter Email"><br><br>
+            <label for="password">Password:</label>
+            <input type="password" name="password" placeholder="Enter Password"><br><br>
 
-         <input type="submit" values="Signup"/>
-    </form>
+            <input type="submit" values="Signup"/>
+        </form>
+    </div>
+
+    
 </body>
 </html>
