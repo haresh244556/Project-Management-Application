@@ -14,6 +14,8 @@ const user_taskController = require("./controller/user_task-controller")
 
 
 const app = express()
+var cors = require('cors')
+app.use(cors())
 //middle ware
 app.use(express.json())//mobile --> accept json data frome request and set into body
 app.use(express.urlencoded({extended:true}))//web-->accept url encoded data from request and set data into body
@@ -92,6 +94,6 @@ app.put("/user_tasks",user_taskController.updateUser_task)
 
 //server
 
-app.listen(3000,function(){
-    console.log("server started on 3000")
+app.listen(4000,function(){
+    console.log("server started on 4000")
 })
