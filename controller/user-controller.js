@@ -61,8 +61,9 @@ module.exports.updateUser = function(req,res){
     let paramfirstName = req.body.firstName
     let paramemail = req.body.email
     let parampassword = req.body.password
+    let paramrole = req.body.role
     
-    UserModel.updateOne({_id:paramuserId},{firstName:paramfirstName,email:paramemail,password:parampassword},function(err, data) {
+    UserModel.updateOne({_id:paramuserId},{firstName:paramfirstName,email:paramemail,password:parampassword,role:paramrole},function(err, data) {
             if (err) {
                 res.json({ msg: "Something went wrong!!!", status: -1, data: err })
             } else {
