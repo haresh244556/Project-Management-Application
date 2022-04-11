@@ -6,6 +6,10 @@ const Project_moduleSchema = new mongoose.Schema({
         type:String
           
     },
+    project:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"project"
+    },
     description:{
         type:String
         
