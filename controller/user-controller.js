@@ -79,7 +79,7 @@ module.exports.login = function(req,res){
 
     let isCorrect = false;
 
-    UserModel.findOne({email:param_email},function(err,data){
+    UserModel.findOne({email:param_email}).populate("role").exec(function(err,data){
         if(data){
             let ans = bcrypt.compareSync(param_password,data.password)
             if(ans == true){
