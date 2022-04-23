@@ -64,10 +64,12 @@ module.exports.updateTask = function(req,res){
     let paramtaskName = req.body.taskName
     let paramdescription = req.body.description
     let paramestimatedHours = req.body.estimatedHours
+    let paramstatus = req.body.status
     
     TaskModel.updateOne({_id:paramtaskId},{taskName:paramtaskName,
         description:paramdescription,
-        estimatedHours:paramestimatedHours}, function(err,data){
+        estimatedHours:paramestimatedHours,
+        status:paramstatus}, function(err,data){
         if(err){
             res.json({msg:"Something went wrong!!!",status:-1,data:err})
         }else{

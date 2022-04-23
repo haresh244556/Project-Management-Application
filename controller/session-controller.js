@@ -1,5 +1,7 @@
 const fs = require("fs")
 
+
+
 function login(req,res){
     let loginHTML = fs.readFileSync("./views/login.html")
     res.write(loginHTML)
@@ -21,6 +23,8 @@ function saveuser(req,res){
         data:req.body
     })
 }
+
+
 
 module.exports.login = login
 module.exports.signup = signup

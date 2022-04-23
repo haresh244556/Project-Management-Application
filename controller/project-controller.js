@@ -8,6 +8,7 @@ module.exports.addProject = function(req,res){
     let estimatedHours = req.body.estimatedHours
     let startDate = req.body.startDate
     let completionDate = req.body.completionDate
+    let status = req.body.status
 
     let project = new ProjectModel({
         title:title,
@@ -15,7 +16,8 @@ module.exports.addProject = function(req,res){
         technology:technology,
         estimatedHours:estimatedHours,
         startDate:startDate,
-        completionDate:completionDate
+        completionDate:completionDate,
+        status:status
         
     })
 
@@ -32,7 +34,7 @@ module.exports.addProject = function(req,res){
 module.exports.getAllProjects = function(req,res){
     
     //REST
-    ProjectModel.find(function(err,data){
+    ProjectModel.find().populate("status").exec(function(err,data){
         if(err){
             res.json({msg:"Something went wrong!!!",status:-1,data:err})
         }else{
@@ -67,13 +69,16 @@ module.exports.updateProject = function(req,res){
     let paramestimatedHours = req.body.estimatedHours
     let paramstartDate = req.body.startDate
     let paramcompletionDate = req.body.completionDate
+    let paramstatus = req.body.status
+
     
     ProjectModel.updateOne({_id:paramprojectId},{title:paramtitle,
         description:paramdescription,
         technology:paramtechnology,
         estimatedHours:paramestimatedHours,
         startDate:paramstartDate,
-        completionDate:paramcompletionDate},function(err,data){
+        completionDate:paramcompletionDate,
+        status:paramstatus},function(err,data){
         if(err){
             res.json({msg:"Something went wrong!!!",status:-1,data:err})
         }else{

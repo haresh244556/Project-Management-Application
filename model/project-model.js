@@ -19,6 +19,10 @@ const ProjectSchema = new mongoose.Schema({
     },
     completionDate:{
         type:String
+    },
+    status:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"status"
     }
 })
 
